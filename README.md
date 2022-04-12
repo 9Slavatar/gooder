@@ -19,7 +19,7 @@ print(gooder.get_links())
 # Print only result titles
 print(gooder.get_titles())
 
-# Print all results (links+titles)
+# Print all results list[tuple[link,title]]
 print(gooder.raw_results)
 
 # Save urls to json file
