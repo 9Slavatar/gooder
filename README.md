@@ -35,3 +35,7 @@ gooder.save_to_file(only_urls=True, to_json=True, override=True, file="results.j
 | Gooder.get_titles | *None* | gooder.get_titles() | [title, title, ...] |
 | Gooder.save_to_file | only_urls: bool = True override: bool = True to_json: bool = False file: str = "urls.txt"  | gooder.save_to_file() | New file with urls |
 | Gooder.get_hostname | links: str \| list | gooder.get_hostname( https://google.com/) | google.com |
+
+## Todo:
+ + Detect captcha
+ + Add proxy manager
