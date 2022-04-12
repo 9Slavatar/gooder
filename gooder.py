@@ -8,7 +8,7 @@ from json import dump
 
 class Gooder:
     captcha: bool = False
-    raw_results: list
+    raw_results: list = []
 
     def __init__(self) -> None:
         # Init main class

@@ -4,10 +4,10 @@ Google search engine parser on python3
 ## Instruction
 > Requirement python 3.10+
 
-> python3 -m pip install -r requirements.txt
+> pip install gooder
 
 ```python
-import gooder
+from gooder import Gooder
 
 gooder = Gooder()
 # Make request on google.com/search?q=Hello+World
