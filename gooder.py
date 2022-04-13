@@ -14,7 +14,7 @@ class Gooder:
 
     def __init__(self) -> None:
         # Init main class
-        self.pool = urllib3.PoolManager(num_pools=10)
+        self.pool = urllib3.PoolManager(num_pools=1)
 
     def get_captcha_url(self) -> str | None:
         return self.__captcha
@@ -46,7 +46,7 @@ class Gooder:
         self.__headers = r.getheaders()
 
         # Check on rate limit
-        if r.geturl() != f"https://google.com/search?q={query}":
+        if r.status != 200:
             self.__captcha = r.geturl()
             return False
 

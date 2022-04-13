@@ -22,7 +22,7 @@ print(gooder.get_titles())
 # Print all results list[tuple[link,title]]
 print(gooder.raw_results)
 
-# Check on captcha (rate limit)
+# If TRUE = parsed, else = captcha/rate limit
 if (parsed)
     # Save urls to json file
     gooder.save_to_file(only_urls=True, to_json=True, override=True, file="results.json")

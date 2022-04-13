@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "gooder"
-version = "0.3.0"
+version = "0.3.2"
 description = "Simple Google parser"
 authors = ["9Slavatar <nslavatar@gmail.com>"]
 license = "LGPL-3.0-only"
