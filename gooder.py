@@ -7,12 +7,20 @@ from json import dump
 
 
 class Gooder:
-    captcha: bool = False
+    __captcha: str | None = None
+    __headers: dict | None = None
+
     raw_results: list = []
 
     def __init__(self) -> None:
         # Init main class
         self.pool = urllib3.PoolManager(num_pools=10)
+
+    def get_captcha_url(self) -> str | None:
+        return self.__captcha
+
+    def get_headers(self) -> dict | None:
+        return self.__headers
 
     def parse(
         self,
@@ -31,9 +39,18 @@ class Gooder:
             f"https://google.com/search?q={query}",
             headers={
                 "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36",
-                "accept": "*/*",
             },
         )
+
+        # Save metadata
+        self.__headers = r.getheaders()
+
+        # Check on rate limit
+        if r.geturl() != f"https://google.com/search?q={query}":
+            self.__captcha = r.geturl()
+            return False
+
+        self.__captcha = None
 
         p = fromstring(str(r.data))
 
@@ -49,7 +66,7 @@ class Gooder:
                 continue
             self.raw_results.append([url, element.text_content()])
 
-        return not self.captcha
+        return True
 
     @overload
     def get_hostname(self, links: list[str]) -> list[str | None]:
