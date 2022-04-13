@@ -42,3 +42,4 @@ if (parsed)
 
 ## Todo:
  + Add proxy manager
+ + Replace `raw_results: list(list())` to `dict()` 
